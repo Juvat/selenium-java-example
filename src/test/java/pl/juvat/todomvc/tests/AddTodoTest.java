@@ -1,6 +1,7 @@
 package pl.juvat.todomvc.tests;
 
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.juvat.todomvc.core.TestCase;
@@ -45,6 +46,11 @@ public class AddTodoTest extends TestCase {
     public void shouldClearInputFieldWhenTodoItemIsAdded() {
         todoMvcPage.enterTodo(TODO_ONE);
         assertThat(todoMvcPage.getInputText()).isBlank();
+    }
+
+    @AfterMethod
+    public void clearLocalStorageAfterTest() {
+        clearLocalStorage();
     }
 
 }

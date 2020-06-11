@@ -24,6 +24,9 @@ public final class TodoMvcPage extends WebPage {
     @FindBy(css = ".footer")
     private WebElement footer;
 
+    @FindBy(css = ".todo-count")
+    private WebElement todoCount;
+
     public TodoMvcPage(final WebDriver driver) {
         super(driver);
         wait.until(visibilityOf(todoInput));
@@ -59,6 +62,11 @@ public final class TodoMvcPage extends WebPage {
     @Step
     public boolean isFooterDisplayed() {
         return footer.isDisplayed();
+    }
+
+    @Step
+    public String getTodoCountText() {
+        return todoCount.getText();
     }
 
 }

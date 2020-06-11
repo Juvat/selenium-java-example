@@ -1,6 +1,7 @@
 package pl.juvat.todomvc.tests;
 
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.juvat.todomvc.core.TestCase;
@@ -33,18 +34,23 @@ public class EditTodoTest extends TestCase {
 
     @Test
     public void shouldEditTodoItem() {
-        var todoRow = todoMvcPage.getTodoList().getTodoRows().get(0);
-        todoRow.editTodo(" edited");
+        final var todoRow = todoMvcPage.getTodoList().getTodoRows().get(0);
+        todoRow.editTodo("Edited todo");
         assertThat(todoMvcPage.getTodoList().getTodoRows()).hasSize(1)
                                                            .extractingResultOf("getTodoText")
-                                                           .containsOnly("One edited");
+                                                           .containsOnly("Edited todo");
     }
 
     @Test
     public void emptyTextShouldRemoveTodoItem() {
-        var todoRow = todoMvcPage.getTodoList().getTodoRows().get(0);
+        final var todoRow = todoMvcPage.getTodoList().getTodoRows().get(0);
         todoRow.editTodo("");
         assertThat(todoMvcPage.isTodoListDisplayed()).isFalse();
+    }
+
+    @AfterMethod
+    public void clearLocalStorageAfterTest() {
+        clearLocalStorage();
     }
 
 }

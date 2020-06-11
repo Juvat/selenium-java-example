@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pl.juvat.todomvc.web.WebComponent;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
+
 /**
  * @author Kamil on 11.06.2020
  */
@@ -44,6 +46,7 @@ public final class TodoRow extends WebComponent {
     @Step
     public void editTodo(final String todo) {
         doubleClickTodo();
+        editInput.sendKeys(Keys.CONTROL + "A" + Keys.BACK_SPACE);
         editInput.sendKeys(todo + Keys.ENTER);
     }
 
@@ -54,7 +57,8 @@ public final class TodoRow extends WebComponent {
 
     @Step
     public void deleteTodo() {
-        deleteButton.click();
+        actions.moveToElement(label).perform();
+        wait.until(visibilityOf(deleteButton)).click();
     }
 
     @Step
@@ -64,7 +68,7 @@ public final class TodoRow extends WebComponent {
 
     @Step
     public void doubleClickTodo() {
-        actions.doubleClick(label);
+        actions.doubleClick(label).perform();
     }
 
 }

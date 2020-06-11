@@ -18,19 +18,12 @@ public final class TodoList extends WebComponent {
     @Getter
     private final List<TodoRow> todoRows;
 
-    @Getter
-    private final Footer footer;
-
     @FindBy(css = "li.todo")
     private List<WebElement> rows;
-
-    @FindBy(css = ".footer")
-    private WebElement footerElement;
 
     public TodoList(final WebDriver driver, final WebElement parent) {
         super(driver, parent);
         todoRows = mapTodoRows();
-        footer = new Footer(driver, footerElement);
     }
 
     private List<TodoRow> mapTodoRows() {

@@ -27,7 +27,7 @@ public class CompleteTodoTest extends TestCase {
         final var todoRow = todoMvcPage.getTodoList().getTodoRows().get(0);
         todoRow.toggleTodo();
         assertThat(todoRow.isTodoComplete()).isTrue();
-        assertThat(todoMvcPage.getTodoList().getFooter().getTodoCountText()).isEqualTo("0 items left");
+        assertThat(todoMvcPage.getTodoCountText()).isEqualTo("0 items left");
     }
 
 }
