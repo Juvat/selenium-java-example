@@ -16,7 +16,7 @@
         <webdrivermanager.version>3.8.1</webdrivermanager.version>
         <assertj-core.version>3.15.0</assertj-core.version>
         <testng.version>7.1.0</testng.version>
-        <snakeyaml.version>1.24</snakeyaml.version>
+        <snakeyaml.version>1.32</snakeyaml.version>
         <logback-classic.version>1.2.3</logback-classic.version>
         <selenium-shutterbug.version>0.9</selenium-shutterbug.version>
         <lombok.version>1.18.8</lombok.version>
